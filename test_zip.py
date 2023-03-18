@@ -1,8 +1,8 @@
-from Steps import Steps
+from Steps.Steps import Steps
 
 
 def test_pack_and_check_several_files(clear_file_before_test):
-    step = Steps.Steps()
+    step = Steps()
     path_zip = step.get_path('resources', 'myzip.zip')
     path_pdf_file = step.get_path('resources', 'file-sample_150kB.pdf')
     path_xls_file = step.get_path('resources', 'file_example_XLS_10.xls')
