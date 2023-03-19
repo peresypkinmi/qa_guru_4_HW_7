@@ -14,6 +14,9 @@ def test_pack_and_check_several_files(clear_file_before_test):
     csv_from_file = step.get_byte_from_file(path_csv_file)
     xls_from_zip = step.get_byte_from_zip(path_xls_file[1:], path_zip)
     xls_from_file = step.get_byte_from_file(path_xls_file)
+    assert step.get_xls_data_from_file(path_xls_file) == step.get_xls_data_from_zip(path_zip, path_xls_file)
+    assert step.get_pdf_pages_from_file(path_pdf_file) == step.get_pdf_pages_from_zip(path_zip, path_pdf_file)
+    assert step.get_values_csv_from_file(path_csv_file)[0] == step.get_values_csv_from_zip(path_zip, path_csv_file)[0]
     assert pdf_from_file == pdf_from_zip
     assert step.get_hash_sum(pdf_from_file) == step.get_hash_sum(pdf_from_zip)
     assert csv_from_file == csv_from_zip
