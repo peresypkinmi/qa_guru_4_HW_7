@@ -54,12 +54,12 @@ class Steps:
             pdf_ = PyPDF2.PdfReader(pdf_data)
             return pdf_.pages[page].extract_text()
 
-    def get_xls_data_from_zip(self, path_zip, path_xls, row=0):
+    def get_xls_data_from_zip(self, path_zip, path_xls, row=0, col=0):
         with zipfile.ZipFile(path_zip, 'r') as zip_:
             xls_file = zip_.read(path_xls[1:])
             text = pd.read_excel(xls_file)
-            return str(text.values[row])
+            return str(text.values[row][col])
 
-    def get_xls_data_from_file(self, path_xls, row=0):
+    def get_xls_data_from_file(self, path_xls, row=0, col=0):
         text = pd.read_excel(path_xls)
-        return str(text.values[row])
+        return str(text.values[row][col])
